@@ -334,7 +334,7 @@ public class TestMvcClient {
 
 		String content = response.getContentAsString();
 		Optional<Link> link = getDiscoverer(response).findLinkWithRel(relation, content);
-
+		System.out.println(content);
 		return link.orElseThrow(() -> new IllegalStateException(
 				"Expected to find link with rel " + relation + " but found none in " + content + "!"));
 	}

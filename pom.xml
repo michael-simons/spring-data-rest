@@ -36,6 +36,7 @@
 		<springdata.solr>4.2.2.BUILD-SNAPSHOT</springdata.solr>
 		<springdata.cassandra>3.0.2.BUILD-SNAPSHOT</springdata.cassandra>
 		<springdata.keyvalue>2.3.2.BUILD-SNAPSHOT</springdata.keyvalue>
+		<springdata.neo4j>1.1.0</springdata.neo4j>
 
 		<hibernate.version>5.4.8.Final</hibernate.version>
 		<jsonpath>1.1.0</jsonpath>

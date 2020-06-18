@@ -260,6 +260,6 @@ public abstract class AbstractWebIntegrationTests {
 	}
 
 	protected MultiValueMap<LinkRelation, String> getRootAndLinkedResources() {
-		return new LinkedMultiValueMap<LinkRelation, String>(0);
+		return new LinkedMultiValueMap<>(0);
 	}
 }
