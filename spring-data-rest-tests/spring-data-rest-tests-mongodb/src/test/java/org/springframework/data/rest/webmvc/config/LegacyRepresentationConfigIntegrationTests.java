@@ -25,7 +25,7 @@ import org.junit.Test;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
-import org.springframework.data.rest.tests.mongodb.MongoDbRepositoryConfig;
+import org.springframework.data.rest.tests.neo4j.MongoDbRepositoryConfig;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 

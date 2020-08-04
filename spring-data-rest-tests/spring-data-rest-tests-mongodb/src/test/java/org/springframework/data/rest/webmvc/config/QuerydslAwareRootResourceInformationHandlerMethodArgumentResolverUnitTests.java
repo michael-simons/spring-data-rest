@@ -41,10 +41,10 @@ import org.springframework.data.querydsl.binding.QuerydslPredicateBuilder;
 import org.springframework.data.repository.support.Repositories;
 import org.springframework.data.repository.support.RepositoryInvoker;
 import org.springframework.data.repository.support.RepositoryInvokerFactory;
-import org.springframework.data.rest.tests.mongodb.QUser;
-import org.springframework.data.rest.tests.mongodb.Receipt;
-import org.springframework.data.rest.tests.mongodb.ReceiptRepository;
-import org.springframework.data.rest.tests.mongodb.User;
+import org.springframework.data.rest.tests.neo4j.QUser;
+import org.springframework.data.rest.tests.neo4j.Receipt;
+import org.springframework.data.rest.tests.neo4j.ReceiptRepository;
+import org.springframework.data.rest.tests.neo4j.User;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import com.querydsl.core.types.Predicate;

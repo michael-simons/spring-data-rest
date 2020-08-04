@@ -20,7 +20,8 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.tests.AbstractControllerIntegrationTests;
-import org.springframework.data.rest.tests.mongodb.Neo4jRepositoryConfig;
+import org.springframework.data.rest.tests.neo4j.Neo4jRepositoryConfig;
+import org.springframework.data.rest.tests.neo4j.Neo4jServerConfig;
 import org.springframework.data.rest.webmvc.support.DelegatingHandlerMapping;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.context.ContextConfiguration;
@@ -33,7 +34,7 @@ import org.springframework.web.servlet.HandlerExecutionChain;
  * @author Oliver Gierke
  * @soundtrack Elephants Crossing - Echo (Irrelephant)
  */
-@ContextConfiguration(classes = Neo4jRepositoryConfig.class)
+@ContextConfiguration(classes = { Neo4jServerConfig.class, Neo4jRepositoryConfig.class })
 public class RepositoryRestHandlerMappingIntegrationTests extends AbstractControllerIntegrationTests {
 
 	@Autowired DelegatingHandlerMapping mapping;

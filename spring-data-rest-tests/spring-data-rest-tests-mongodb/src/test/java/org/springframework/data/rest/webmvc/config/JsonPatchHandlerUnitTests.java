@@ -17,7 +17,7 @@ package org.springframework.data.rest.webmvc.config;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
-import static org.springframework.data.rest.tests.mongodb.TestUtils.*;
+import static org.springframework.data.rest.tests.neo4j.TestUtils.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,8 +33,8 @@ import org.springframework.data.mapping.context.PersistentEntities;
 import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.core.mapping.ResourceMappings;
-import org.springframework.data.rest.tests.mongodb.Address;
-import org.springframework.data.rest.tests.mongodb.User;
+import org.springframework.data.rest.tests.neo4j.Address;
+import org.springframework.data.rest.tests.neo4j.User;
 import org.springframework.data.rest.webmvc.RestMediaTypes;
 import org.springframework.data.rest.webmvc.json.DomainObjectReader;
 import org.springframework.data.rest.webmvc.mapping.Associations;

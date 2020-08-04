@@ -29,8 +29,9 @@ import org.springframework.data.mapping.context.PersistentEntities;
 import org.springframework.data.rest.core.support.DefaultSelfLinkProvider;
 import org.springframework.data.rest.tests.AbstractControllerIntegrationTests;
 import org.springframework.data.rest.tests.AbstractControllerIntegrationTests.TestConfiguration;
-import org.springframework.data.rest.tests.mongodb.Neo4jRepositoryConfig;
-import org.springframework.data.rest.tests.mongodb.User;
+import org.springframework.data.rest.tests.neo4j.Neo4jRepositoryConfig;
+import org.springframework.data.rest.tests.neo4j.Neo4jServerConfig;
+import org.springframework.data.rest.tests.neo4j.User;
 import org.springframework.data.rest.webmvc.mapping.Associations;
 import org.springframework.data.rest.webmvc.support.Projector;
 import org.springframework.hateoas.server.EntityLinks;
@@ -43,7 +44,7 @@ import org.springframework.test.context.ContextConfiguration;
  *
  * @author Oliver Gierke
  */
-@ContextConfiguration(classes = { TestConfiguration.class, Neo4jRepositoryConfig.class })
+@ContextConfiguration(classes = { TestConfiguration.class, Neo4jServerConfig.class, Neo4jRepositoryConfig.class })
 public class PersistentEntityResourceAssemblerIntegrationTests extends AbstractControllerIntegrationTests {
 
 	@Autowired PersistentEntities entities;

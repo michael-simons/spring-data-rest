@@ -34,12 +34,12 @@ import org.springframework.data.mapping.context.PersistentEntities;
 import org.springframework.data.rest.core.config.JsonSchemaFormat;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.tests.TestMvcClient;
-import org.springframework.data.rest.tests.mongodb.Neo4jRepositoryConfig;
-import org.springframework.data.rest.tests.mongodb.Profile;
-import org.springframework.data.rest.tests.mongodb.User;
-import org.springframework.data.rest.tests.mongodb.User.EmailAddress;
-import org.springframework.data.rest.tests.mongodb.User.TypeWithPattern;
-import org.springframework.data.rest.tests.mongodb.groovy.SimulatedGroovyDomainClass;
+import org.springframework.data.rest.tests.neo4j.Neo4jRepositoryConfig;
+import org.springframework.data.rest.tests.neo4j.Neo4jServerConfig;
+import org.springframework.data.rest.tests.neo4j.Profile;
+import org.springframework.data.rest.tests.neo4j.User.EmailAddress;
+import org.springframework.data.rest.tests.neo4j.User.TypeWithPattern;
+import org.springframework.data.rest.tests.neo4j.groovy.SimulatedGroovyDomainClass;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
 import org.springframework.data.rest.webmvc.json.PersistentEntityToJsonSchemaConverter.ValueTypeSchemaPropertyCustomizerFactory;
@@ -59,7 +59,7 @@ import com.jayway.jsonpath.PathNotFoundException;
  * @author Greg Turnquist
  */
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = { Neo4jRepositoryConfig.class, TestConfiguration.class })
+@ContextConfiguration(classes = { Neo4jServerConfig.class, Neo4jRepositoryConfig.class, TestConfiguration.class })
 public class PersistentEntityToJsonSchemaConverterUnitTests {
 
 	@Autowired MessageResolver resolver;
@@ -90,21 +90,25 @@ public class PersistentEntityToJsonSchemaConverterUnitTests {
 
 		TestMvcClient.initWebTest();
 
-		ValueTypeSchemaPropertyCustomizerFactory customizerFactory = mock(ValueTypeSchemaPropertyCustomizerFactory.class);
+		ValueTypeSchemaPropertyCustomizerFactory customizerFactory = mock(
+			ValueTypeSchemaPropertyCustomizerFactory.class);
 
-		converter = new PersistentEntityToJsonSchemaConverter(entities, associations, resolver, objectMapper, configuration,
-				customizerFactory);
+		converter = new PersistentEntityToJsonSchemaConverter(entities, associations, resolver, objectMapper,
+			configuration,
+			customizerFactory);
 	}
 
 	@Test // DATAREST-631, DATAREST-632
 	public void fulfillsConstraintsForProfile() {
 
-		List<Constraint> constraints = new ArrayList<Constraint>();
+		List<Constraint> constraints = new ArrayList<>();
 		constraints.add(new Constraint("$.properties.id", is(notNullValue()), "Has descriptor for id property"));
 		constraints.add(new Constraint("$.description", is("Profile description"), "Adds description to schema root"));
-		constraints.add(new Constraint("$.properties.renamed", is(notNullValue()), "Has descriptor for renamed property"));
+		constraints
+			.add(new Constraint("$.properties.renamed", is(notNullValue()), "Has descriptor for renamed property"));
 		constraints.add(
-				new Constraint("$.properties.aliased", is(nullValue()), "No descriptor for original name of renamed property"));
+			new Constraint("$.properties.aliased", is(nullValue()),
+				"No descriptor for original name of renamed property"));
 
 		assertConstraints(Profile.class, constraints);
 	}
@@ -112,7 +116,7 @@ public class PersistentEntityToJsonSchemaConverterUnitTests {
 	@Test // DATAREST-754
 	public void handlesGroovyDomainObjects() {
 
-		List<Constraint> constraints = new ArrayList<Constraint>();
+		List<Constraint> constraints = new ArrayList<>();
 		constraints.add(new Constraint("$.properties.name", is(notNullValue()), "Has descriptor for name property"));
 
 		assertConstraints(SimulatedGroovyDomainClass.class, constraints);
@@ -126,7 +130,8 @@ public class PersistentEntityToJsonSchemaConverterUnitTests {
 		for (Constraint constraint : constraints) {
 
 			try {
-				assertThat(constraint.description, JsonPath.read(writeSchemaFor, constraint.selector), constraint.matcher);
+				assertThat(constraint.description, JsonPath.read(writeSchemaFor, constraint.selector),
+					constraint.matcher);
 			} catch (PathNotFoundException e) {
 				assertThat(constraint.matcher.matches(null)).isTrue();
 			} catch (RuntimeException e) {

@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.tests.AbstractControllerIntegrationTests;
-import org.springframework.data.rest.tests.mongodb.MongoDbRepositoryConfig;
+import org.springframework.data.rest.tests.neo4j.MongoDbRepositoryConfig;
 import org.springframework.data.rest.webmvc.support.DelegatingHandlerMapping;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.context.ContextConfiguration;

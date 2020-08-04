@@ -25,7 +25,8 @@ import org.junit.Test;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
-import org.springframework.data.rest.tests.mongodb.Neo4jRepositoryConfig;
+import org.springframework.data.rest.tests.neo4j.Neo4jRepositoryConfig;
+import org.springframework.data.rest.tests.neo4j.Neo4jServerConfig;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 
@@ -38,7 +39,7 @@ import org.springframework.test.context.ContextConfiguration;
 public class LegacyRepresentationConfigIntegrationTests extends AbstractRepositoryRestMvcConfigurationIntegrationTests {
 
 	@Configuration
-	@Import({ Neo4jRepositoryConfig.class, RepositoryRestMvcConfiguration.class })
+	@Import({ Neo4jServerConfig.class, Neo4jRepositoryConfig.class, RepositoryRestMvcConfiguration.class })
 	static class Config extends RepositoryRestConfigurerAdapter {
 
 		@Override

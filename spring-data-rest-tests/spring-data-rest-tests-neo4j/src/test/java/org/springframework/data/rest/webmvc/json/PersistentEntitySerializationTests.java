@@ -30,12 +30,13 @@ import org.springframework.data.projection.ProjectionFactory;
 import org.springframework.data.projection.SpelAwareProxyProjectionFactory;
 import org.springframework.data.repository.support.Repositories;
 import org.springframework.data.rest.tests.RepositoryTestsConfig;
-import org.springframework.data.rest.tests.mongodb.Address;
-import org.springframework.data.rest.tests.mongodb.Neo4jRepositoryConfig;
-import org.springframework.data.rest.tests.mongodb.User;
-import org.springframework.data.rest.tests.mongodb.User.Gender;
-import org.springframework.data.rest.tests.mongodb.User.Nested;
-import org.springframework.data.rest.tests.mongodb.UserRepository;
+import org.springframework.data.rest.tests.neo4j.Address;
+import org.springframework.data.rest.tests.neo4j.Neo4jRepositoryConfig;
+import org.springframework.data.rest.tests.neo4j.Neo4jServerConfig;
+import org.springframework.data.rest.tests.neo4j.User;
+import org.springframework.data.rest.tests.neo4j.User.Gender;
+import org.springframework.data.rest.tests.neo4j.User.Nested;
+import org.springframework.data.rest.tests.neo4j.UserRepository;
 import org.springframework.data.rest.webmvc.PersistentEntityResource;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.PagedModel;
@@ -60,7 +61,7 @@ import com.jayway.jsonpath.JsonPath;
  * @author Oliver Gierke
  */
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = { Neo4jRepositoryConfig.class, RepositoryTestsConfig.class,
+@ContextConfiguration(classes = { Neo4jServerConfig.class, Neo4jRepositoryConfig.class, RepositoryTestsConfig.class,
 		PersistentEntitySerializationTests.TestConfig.class })
 public class PersistentEntitySerializationTests {
 
@@ -123,7 +124,7 @@ public class PersistentEntitySerializationTests {
 	public void createsNestedResourceForMap() throws Exception {
 
 		User dave = users.save(new User());
-		dave.colleaguesMap = new HashMap<String, Nested>();
+		dave.colleaguesMap = new HashMap<>();
 		dave.colleaguesMap.put("carter", new Nested(users.save(new User())));
 
 		PersistentEntityResource resource = PersistentEntityResource

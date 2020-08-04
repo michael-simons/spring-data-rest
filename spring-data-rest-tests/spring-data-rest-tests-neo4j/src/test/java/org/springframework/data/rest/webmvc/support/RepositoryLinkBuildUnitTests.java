@@ -25,7 +25,7 @@ import org.springframework.data.mapping.context.PersistentEntities;
 import org.springframework.data.rest.core.mapping.PersistentEntitiesResourceMappings;
 import org.springframework.data.rest.core.mapping.ResourceMappings;
 import org.springframework.data.rest.tests.TestMvcClient;
-import org.springframework.data.rest.tests.mongodb.Profile;
+import org.springframework.data.rest.tests.neo4j.Profile;
 import org.springframework.data.rest.webmvc.BaseUri;
 import org.springframework.hateoas.Link;
 

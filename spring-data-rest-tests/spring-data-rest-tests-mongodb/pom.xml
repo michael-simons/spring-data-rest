@@ -88,7 +88,7 @@
 							<outputDirectory>target/generated-sources/querydsl</outputDirectory>
 							<processor>org.springframework.data.mongodb.repository.support.MongoAnnotationProcessor</processor>
 							<options>
-								<querydsl.excludedPackages>org.springframework.data.rest.tests.mongodb.groovy,groovy.lang</querydsl.excludedPackages>
+								<querydsl.excludedPackages>org.springframework.data.rest.tests.neo4j.groovy,groovy.lang</querydsl.excludedPackages>
 							</options>
 						</configuration>
 					</execution>
